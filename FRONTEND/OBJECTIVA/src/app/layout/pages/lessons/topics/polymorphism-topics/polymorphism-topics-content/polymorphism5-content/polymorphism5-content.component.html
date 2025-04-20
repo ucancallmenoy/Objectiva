@@ -1,0 +1,226 @@
+<div class="lesson-container">
+    <!-- Progress Tracker -->
+  <div class="progress-tracker" [class.sticky]="isSticky">
+    <div class="progress-nav">
+      <i class="fa fa-times close-icon" (click)="goBack()"></i>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+            </div>
+            <div class="progress-text">{{ progressPercentage }}% Complete</div>
+        </div>
+    </div>
+  </div>
+  
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/polymorphism-with-interfaces.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Using Interfaces for Polymorphism</h1>
+            <p>An interface is like a contract that says, "any class that implements this interface must have certain methods." When different classes implement the same interface, they can provide their own version of the methods. This lets you use the same interface to call different methods from different classes.</p>
+            <img src="assets/appliance-polymorphism.png" alt="">
+            <p>It's like different appliances (classes) having a power button (interface method), but each appliance operates differently when turned on.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s2')" *ngIf="visibleSections === 2" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <p>To implemet it, follow this:</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Appliance {{'{'}}  
+    void turnOn(); <span class="comment">// All appliances must implement this method</span>  
+{{'}'}}  
+
+class Fan implements Appliance {{'{'}}  
+    {{'@Override'}} 
+    public void turnOn() {{'{'}}  
+        System.out.println("Fan is spinning");  
+    {{'}'}}  
+{{'}'}}  
+
+class Light implements Appliance {{'{'}}  
+    {{'@Override'}}
+    public void turnOn() {{'{'}}  
+        System.out.println("Light is glowing");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Appliance appliance1 = new Fan(); <span class="comment">// Polymorphism: Appliance reference</span>  
+        Appliance appliance2 = new Light();  
+
+        appliance1.turnOn(); <span class="comment">// Output: Fan is spinning</span>  
+        appliance2.turnOn(); <span class="comment">// Output: Light is glowing</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s3')" *ngIf="visibleSections === 3" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Achieving Loose Coupling with Interfaces</h1>
+            <p>Loose coupling means your code is flexible and doesn't depend too much on specific details. Using interfaces helps because your classes only need to know about the interface, not the actual class doing the work.</p>
+            <img src="assets/achieving-polymorphism.png" alt="">
+            <p>It's like a universal charger that can charge different devices (phone, tablet, etc.) because they all follow the same charging protocol (interface).</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s4')" *ngIf="visibleSections === 4" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <p>How to implement it?</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Charger {{'{'}}  
+    void charge(); <span class="comment">// Common method for charging</span>  
+{{'}'}}  
+
+class Phone implements Charger {{'{'}}  
+    {{'@Override'}}
+    public void charge() {{'{'}}  
+        System.out.println("Phone is charging");  
+    {{'}'}}  
+{{'}'}}  
+
+class Tablet implements Charger {{'{'}}  
+    {{'@Override'}}
+    public void charge() {{'{'}}  
+        System.out.println("Tablet is charging");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Charger device = new Phone(); <span class="comment">// Loose coupling: Easy to swap with other classes</span>  
+        device.charge(); <span class="comment">// Output: Phone is charging</span>  
+
+        device = new Tablet();  
+        device.charge(); <span class="comment">// Output: Tablet is charging</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Interface-Based Polymorphism</h1>
+            <p>With interfaces, you can treat different objects the same way. Even though they are different classes, they can still be treated as the same type (the interface).</p>
+            <img src="assets/workers-polymorphism.png" alt="">
+            <p>It's like hiring workers (interface) to do a task, where the worker could be a painter, plumber, or electrician (different implementations).</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s6')" *ngIf="visibleSections === 6" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <p>How to implement it?</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Worker {{'{'}}  
+    void doWork(); <span class="comment">// Define the task</span>  
+{{'}'}}  
+
+class Painter implements Worker {{'{'}}  
+    {{'@Override'}}
+    public void doWork() {{'{'}}  
+        System.out.println("Painter is painting the wall");  
+    {{'}'}}  
+{{'}'}}  
+
+class Electrician implements Worker {{'{'}}  
+    {{'@Override'}}
+    public void doWork() {{'{'}}  
+        System.out.println("Electrician is fixing the wiring");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Worker worker = new Painter(); <span class="comment">// Interface-based polymorphism</span>  
+        worker.doWork(); <span class="comment">// Output: Painter is painting the wall</span>  
+
+        worker = new Electrician();  
+        worker.doWork(); <span class="comment">// Output: Electrician is fixing the wiring</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s7')" *ngIf="visibleSections === 7" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container quiz-container">
+            <h2 class="quiz-title">Check Your Understanding</h2>
+            <div class="quiz-content">
+              <div class="question-card" *ngFor="let question of questions; let i = index">
+                <p class="question-text">{{ i + 1 }}. {{ question.text }}</p>
+                <div class="options-container">
+                  <div class="option" *ngFor="let option of question.options">
+                    <label class="option-label">
+                      <input type="radio" 
+                             [name]="'question' + i" 
+                             [value]="option" 
+                             (change)="selectAnswer(i, option)">
+                      <span class="option-text">{{ option }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="submit-container">
+                <button class="submit-btn" (click)="submitAnswers()">
+                  <i class="fas fa-check-circle me-2"></i>Submit Answers
+                </button>
+              </div>
+            </div>
+          </div>
+      </section>
+    
+      <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container completion-container">
+            <div class="completion-content">
+              <div class="completion-header">
+                <i class="fas fa-trophy trophy-icon"></i>
+                <h1>Congratulations!</h1>
+              </div>
+              <p class="completion-message">You have successfully completed the lesson on Understanding Abstraction!</p>
+              <div class="completion-details">
+                <div class="completion-stat">
+                  <i class="fas fa-star"></i>
+                  <span>Lesson Completed</span>
+                </div>
+                <div class="completion-stat">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Knowledge Verified</span>
+                </div>
+              </div>
+              <div class="next-steps">
+                <img src="assets/finish.png" class="finish-image" (click)="showCompletionPopup()" alt="Finish">
+                <p class="next-hint">Click the coffee bag to continue your journey!</p>
+              </div>
+            </div>
+          </div>
+      </section>
+
+</div>

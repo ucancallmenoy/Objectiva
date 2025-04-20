@@ -1,0 +1,201 @@
+<div class="lesson-container">
+    <!-- Progress Tracker -->
+  <div class="progress-tracker" [class.sticky]="isSticky">
+    <div class="progress-nav">
+      <i class="fa fa-times close-icon" (click)="goBack()"></i>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+            </div>
+            <div class="progress-text">{{ progressPercentage }}% Complete</div>
+        </div>
+    </div>
+  </div>
+  
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/basic-oop-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Creating Classes</h1>
+            <p>Classes are the blueprint for creating objects. It defines the structure and behavior of objects and contains variables and methods</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    <span class="comment">// Class definiton for a student</span>
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s2')" *ngIf="visibleSections === 2" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Instance Variables</h1>
+            <p>It is the variables declared inside a class. Each object has its own copy of these variables and it represents the state of an objet.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        String name;    <span class="comment">// Student's name</span>
+        int age;        <span class="comment">// Student's age</span>
+        double gpa;     <span class="comment">// Student's GPA</span>
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s3')" *ngIf="visibleSections === 3" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Methods</h1>
+            <p>These are the functions defined inside a class that perform actions or computations. It can access and modify instance variables.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    <span class="comment">// Method to calculate academic standing</span>
+    public String getAcademicStatus() {{'{'}}
+        if (gpa >= 3.5) {{'{'}}
+            return "Dean's List";
+        {{'}'}} else if (gpa >= 3.0) {{'{'}}
+            return "Honors";
+        {{'}'}} else if (gpa >= 2.0) {{'{'}}
+            return "Good Standing";
+        {{'}'}} else {{'{'}}
+            return "Probation";
+        {{'}'}}
+    {{'}'}}
+
+    <span class="comment">// Method with parameters</span>
+    public void updateGPA(double newGPA) {{'{'}}
+        this.gpa = newGPA;
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s4')" *ngIf="visibleSections === 4" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Constructors</h1>
+            <p>It is a special method used to initialize objects. It is called when an object is created and has the same name as the class. It can set initial values for instance variables</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    <span class="comment">// Default constructor</span>
+    public Student() {{'{'}}
+        name = "Ako Lang Toh";
+        age = 18;
+        gpa = 4.0;
+    {{'}'}}
+
+    <span class="comment">// Parameterized constructor</span>
+    public Student(String name, int age, double gpa) {{'{'}}
+        this.name = name;
+        this.age = age;
+        this.gpa = 4.0;
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Creating objects using <strong>new</strong></h1>
+            <p>Use the <strong>new</strong> keyword to create an instance of a class. It allocates memory and calls the constructor.</p>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.Scanner; <span class="comment">// this is the import statement</span>
+public class HelloWorld {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        System.out.println("Hello, World!");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s6')" *ngIf="visibleSections === 6" class="next-image" alt="Next">
+        </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>The <strong>this</strong> keyword</h1>
+            <p>The keyword <strong>this</strong> refers to the current object instance. It is used to distinguish between instance variables and parameters, and it can call other constructors within a constructor.</p>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.Scanner; <span class="comment">// this is the import statement</span>
+public class HelloWorld {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        System.out.println("Hello, World!");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s7')" *ngIf="visibleSections === 7" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container quiz-container">
+            <h2 class="quiz-title">Check Your Understanding</h2>
+            <div class="quiz-content">
+              <div class="question-card" *ngFor="let question of questions; let i = index">
+                <p class="question-text">{{ i + 1 }}. {{ question.text }}</p>
+                <div class="options-container">
+                  <div class="option" *ngFor="let option of question.options">
+                    <label class="option-label">
+                      <input type="radio" 
+                             [name]="'question' + i" 
+                             [value]="option" 
+                             (change)="selectAnswer(i, option)">
+                      <span class="option-text">{{ option }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="submit-container">
+                <button class="submit-btn" (click)="submitAnswers()">
+                  <i class="fas fa-check-circle me-2"></i>Submit Answers
+                </button>
+              </div>
+            </div>
+          </div>
+      </section>
+    
+      <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container completion-container">
+            <div class="completion-content">
+              <div class="completion-header">
+                <i class="fas fa-trophy trophy-icon"></i>
+                <h1>Congratulations!</h1>
+              </div>
+              <p class="completion-message">You have successfully completed the lesson on Understanding Abstraction!</p>
+              <div class="completion-details">
+                <div class="completion-stat">
+                  <i class="fas fa-star"></i>
+                  <span>Lesson Completed</span>
+                </div>
+                <div class="completion-stat">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Knowledge Verified</span>
+                </div>
+              </div>
+              <div class="next-steps">
+                <img src="assets/finish.png" class="finish-image" (click)="showCompletionPopup()" alt="Finish">
+                <p class="next-hint">Click the coffee bag to continue your journey!</p>
+              </div>
+            </div>
+          </div>
+      </section>
+
+</div>

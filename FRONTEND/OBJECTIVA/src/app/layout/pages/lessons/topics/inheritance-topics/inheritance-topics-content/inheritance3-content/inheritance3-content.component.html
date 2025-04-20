@@ -1,0 +1,218 @@
+<div class="lesson-container">
+    <!-- Progress Tracker -->
+  <div class="progress-tracker" [class.sticky]="isSticky">
+    <div class="progress-nav">
+      <i class="fa fa-times close-icon" (click)="goBack()"></i>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+            </div>
+            <div class="progress-text">{{ progressPercentage }}% Complete</div>
+        </div>
+    </div>
+  </div>
+  
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/types-of-inheritance-in-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/properties-inheritance.png" alt="">
+            <p>Inheritance in Java allows a class to acquire properties (fields) and behaviors (methods) of another class. This promotes reusability, modularity, and scalability in software design. Java supports different types of inheritance, each serving specific use cases. Let’s explore them in detail.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s2')" *ngIf="visibleSections === 2" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Single Inheritance</h1>
+            <p>Single inheritance is a fundamental concept in object-oriented programming where a class (child or subclass) inherits properties and methods from another class (parent or superclass). This allows the child class to reuse and extend the functionality of the parent class.</p>
+            <p>Ideal for creating a hierarchy where a child class specializes or extends the behavior of a single parent class.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method prints a message about eating.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method prints a message about barking.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog();
+        dog.eat();  <span class="comment">Inherited from Animal</span>
+        dog.bark(); <span class="comment">Defined in Dog</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s3')" *ngIf="visibleSections === 3" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Multilevel Inheritance</h1>
+            <p>Multilevel inheritance is a type of inheritance where a class inherits properties and methods from another class, which in turn inherits from another class. This creates a chain of inheritance, allowing a class to reuse and extend the functionality of multiple parent classes.</p>
+            <p>Represents an "is-a" relationship at multiple levels and it is always used to model relationships that naturally form a hierarchy.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method prints a message about eating.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method prints a message about barking.</span>
+    {{'}'}}
+{{'}'}}
+
+class Puppy extends Dog {{'{'}} 
+    void weep() {{'{'}} 
+        System.out.println("The puppy weeps."); <span class="comment">This method prints a message about weeping.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Puppy puppy = new Puppy();
+        puppy.eat();  <span class="comment">Inherited from Animal</span>
+        puppy.bark(); <span class="comment">Inherited from Dog</span>
+        puppy.weep(); <span class="comment">Defined in Puppy</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s4')" *ngIf="visibleSections === 4" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Hierarchical Inheritance</h1>
+            <p>Hierarchical inheritance is a type of inheritance where multiple classes inherit properties and methods from a single parent class. This allows each child class to reuse and extend the functionality of the parent class independently.</p>
+            <p>Useful when multiple classes share common properties and behaviors but have distinct functionalities.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method prints a message about eating.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method prints a message about barking.</span>
+    {{'}'}}
+{{'}'}}
+
+class Cat extends Animal {{'{'}} 
+    void meow() {{'{'}} 
+        System.out.println("The cat meows."); <span class="comment">This method prints a message about meowing.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog();
+        dog.eat();  <span class="comment">Inherited from Animal</span>
+        dog.bark(); <span class="comment">Defined in Dog</span>
+
+        Cat cat = new Cat();
+        cat.eat();  <span class="comment">Inherited from Animal</span>
+        cat.meow(); <span class="comment">Defined in Cat</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <img src="assets/why-no-multiple.png" alt="">
+            <h1>But why there is no Multiple Inheritance in Java?</h1>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s6')" *ngIf="visibleSections === 6" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <img src="assets/conflicts.png" alt="">
+            <p>Java doesn’t allow a class to inherit from multiple classes because it can create conflicts, like ambiguity in methods (known as the diamond problem). Interfaces are used instead.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s7')" *ngIf="visibleSections === 7" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container quiz-container">
+            <h2 class="quiz-title">Check Your Understanding</h2>
+            <div class="quiz-content">
+              <div class="question-card" *ngFor="let question of questions; let i = index">
+                <p class="question-text">{{ i + 1 }}. {{ question.text }}</p>
+                <div class="options-container">
+                  <div class="option" *ngFor="let option of question.options">
+                    <label class="option-label">
+                      <input type="radio" 
+                             [name]="'question' + i" 
+                             [value]="option" 
+                             (change)="selectAnswer(i, option)">
+                      <span class="option-text">{{ option }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="submit-container">
+                <button class="submit-btn" (click)="submitAnswers()">
+                  <i class="fas fa-check-circle me-2"></i>Submit Answers
+                </button>
+              </div>
+            </div>
+          </div>
+      </section>
+    
+      <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container completion-container">
+            <div class="completion-content">
+              <div class="completion-header">
+                <i class="fas fa-trophy trophy-icon"></i>
+                <h1>Congratulations!</h1>
+              </div>
+              <p class="completion-message">You have successfully completed the lesson on Understanding Abstraction!</p>
+              <div class="completion-details">
+                <div class="completion-stat">
+                  <i class="fas fa-star"></i>
+                  <span>Lesson Completed</span>
+                </div>
+                <div class="completion-stat">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Knowledge Verified</span>
+                </div>
+              </div>
+              <div class="next-steps">
+                <img src="assets/finish.png" class="finish-image" (click)="showCompletionPopup()" alt="Finish">
+                <p class="next-hint">Click the coffee bag to continue your journey!</p>
+              </div>
+            </div>
+          </div>
+      </section>
+</div>

@@ -1,0 +1,25 @@
+<header id="header">
+    <nav>
+        <ul class="nav-bar">
+            <li class="logo"><a (click)="homepage()"><img src="assets/logo.png" alt="logo"></a></li>
+            <input type="checkbox" id="check">
+            <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
+            <span class="menu">
+                <li><a routerLink="/home">Home</a></li>
+                <li><a routerLink="/lessons">Lessons</a></li>
+                <li><a routerLink="/exercises">Exercises</a></li>
+                <li><a routerLink="/quiz">Quiz</a></li>
+                <li><a routerLink="/about">About</a></li>
+                <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
+            </span>
+            <div class="account-info" (click)="toggleAccount($event)" #accountContainer>
+                <i class="fas fa-user account-icon"></i>
+                <span class="account-name">{{ userName }}</span>
+                <div class="account-popup" *ngIf="showAccount">
+                    <a (click)="openAccountSettings()">Account Settings</a>
+                    <a (click)="logout()">Logout</a>
+                </div>
+            </div>
+        </ul>
+    </nav>
+</header>

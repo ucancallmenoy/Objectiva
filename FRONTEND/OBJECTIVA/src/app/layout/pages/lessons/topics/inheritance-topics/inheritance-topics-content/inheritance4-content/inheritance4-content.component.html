@@ -1,0 +1,154 @@
+<div class="lesson-container">
+    <!-- Progress Tracker -->
+  <div class="progress-tracker" [class.sticky]="isSticky">
+    <div class="progress-nav">
+      <i class="fa fa-times close-icon" (click)="goBack()"></i>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+            </div>
+            <div class="progress-text">{{ progressPercentage }}% Complete</div>
+        </div>
+    </div>
+  </div>
+  
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/method-overriding.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/what-method-overriding.png" alt="">
+            <h1>What is Method Overriding?</h1>
+            <p>Method overriding occurs when a subclass provides a specific implementation for a method that is already defined in its superclass. </p>
+            <p>The signature of the overridden method in the subclass must match the one in the superclass, and it allows the subclass to modify the behavior of the method as required.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s2')" *ngIf="visibleSections === 2" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/overriding-vs-overloading.png" alt="">
+            <h1>Overriding vs. Overloading</h1>
+            <p>Method Overriding and Method Overloading are both ways to define methods in Java, but they have distinct differences.</p>
+            <li>Method Overloading: Multiple methods with the same name but different parameters in the same class.</li>
+            <li>Method Overriding: A subclass provides a specific implementation for a method that is already defined in its superclass.</li>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s3')" *ngIf="visibleSections === 3" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>The {{'@Override'}} annotation</h1>
+            <p>The {{'@Override'}} annotation is used to indicate that a method in a subclass is intended to override a method in its superclass. While this annotation is not mandatory, it helps with readability and also allows the compiler to check that you are correctly overriding a method.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Parent {{'{'}}
+    void display() {{'{'}}
+        System.out.println("Parent's display()");
+    {{'}'}}
+{{'}'}}
+
+class Child extends Parent {{'{'}}
+    {{'@Override'}}
+    void display() {{'{'}}
+        System.out.println("Child's display()");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s4')" *ngIf="visibleSections === 4" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Using 'super' in inheritance</h1>
+            <p>The super keyword is used to refer to the immediate parent class. It can be used to call methods, constructors, and access fields from the superclass.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Parent {{'{'}}
+    void display() {{'{'}}
+        System.out.println("Parent's display()");
+    {{'}'}}
+{{'}'}}
+
+class Child extends Parent {{'{'}}
+    void display() {{'{'}}
+        super.display();
+        System.out.println("Child's display()");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Child child = new Child();
+        child.display();   
+        <span class="comment">// Output: Parent's display()</span>
+        <span class="comment">// Output: Child's display()</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container quiz-container">
+            <h2 class="quiz-title">Check Your Understanding</h2>
+            <div class="quiz-content">
+              <div class="question-card" *ngFor="let question of questions; let i = index">
+                <p class="question-text">{{ i + 1 }}. {{ question.text }}</p>
+                <div class="options-container">
+                  <div class="option" *ngFor="let option of question.options">
+                    <label class="option-label">
+                      <input type="radio" 
+                             [name]="'question' + i" 
+                             [value]="option" 
+                             (change)="selectAnswer(i, option)">
+                      <span class="option-text">{{ option }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="submit-container">
+                <button class="submit-btn" (click)="submitAnswers()">
+                  <i class="fas fa-check-circle me-2"></i>Submit Answers
+                </button>
+              </div>
+            </div>
+          </div>
+      </section>
+    
+      <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container completion-container">
+            <div class="completion-content">
+              <div class="completion-header">
+                <i class="fas fa-trophy trophy-icon"></i>
+                <h1>Congratulations!</h1>
+              </div>
+              <p class="completion-message">You have successfully completed the lesson on Understanding Abstraction!</p>
+              <div class="completion-details">
+                <div class="completion-stat">
+                  <i class="fas fa-star"></i>
+                  <span>Lesson Completed</span>
+                </div>
+                <div class="completion-stat">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Knowledge Verified</span>
+                </div>
+              </div>
+              <div class="next-steps">
+                <img src="assets/finish.png" class="finish-image" (click)="showCompletionPopup()" alt="Finish">
+                <p class="next-hint">Click the coffee bag to continue your journey!</p>
+              </div>
+            </div>
+          </div>
+      </section>
+</div>

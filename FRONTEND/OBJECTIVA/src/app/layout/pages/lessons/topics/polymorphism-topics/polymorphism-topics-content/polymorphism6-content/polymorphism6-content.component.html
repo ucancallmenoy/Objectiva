@@ -1,0 +1,332 @@
+<div class="lesson-container">
+    <!-- Progress Tracker -->
+  <div class="progress-tracker" [class.sticky]="isSticky">
+    <div class="progress-nav">
+      <i class="fa fa-times close-icon" (click)="goBack()"></i>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+            </div>
+            <div class="progress-text">{{ progressPercentage }}% Complete</div>
+        </div>
+    </div>
+  </div>
+  
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/implementation-in-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Syntax for Overloading and Overriding</h1>
+            <p>Overloading and overriding are two ways that methods in Java can be redefined in subclasses. Overloading is when a method has the same name but different parameters, while overriding is when a method has the same name and parameters as a method in its superclass.</p>
+            <img src="assets/over-over-polymorphism.png" alt="">
+            <p>Method overloading is like a Swiss Army knife with multiple tools (compile-time), while method overriding is like a custom-built tool that replaces a standard one for a specific job (runtime).</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s2')" *ngIf="visibleSections === 2" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/overloading-polymorphism.png" alt="">
+            <h1>Method Overloading (Compile-time Polymorphism)</h1>
+            <p>Method overloading happens when you define multiple methods with the same name but different parameters (number or type). The appropriate method is chosen by the compiler based on the method call.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s3')" *ngIf="visibleSections === 3" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <p>Here's how to do it:</p>
+            <pre class="line-numbers"><code class="language-java">
+class Calculator {{'{'}}  
+    int add(int a, int b) {{'{'}}  
+        return a + b; <span class="comment">// Adds two integers</span>  
+    {{'}'}}  
+
+    int add(int a, int b, int c) {{'{'}}  
+        return a + b + c; <span class="comment">// Adds three integers</span>  
+    {{'}'}}  
+
+    double add(double a, double b) {{'{'}}  
+        return a + b; <span class="comment">// Adds two double values</span>  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Calculator calc = new Calculator();  
+        System.out.println("Sum of 2 integers: " + calc.add(3, 5)); <span class="comment">// Output: 8</span>  
+        System.out.println("Sum of 3 integers: " + calc.add(1, 2, 3)); <span class="comment">// Output: 6</span>  
+        System.out.println("Sum of 2 doubles: " + calc.add(2.5, 3.5)); <span class="comment">// Output: 6.0</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s4')" *ngIf="visibleSections === 4" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <img src="assets/overriding-polymorphism.png" alt="">
+            <h1>Method Overriding (Runtime Polymorphism)</h1>
+            <p>Method overriding occurs when a subclass provides its specific implementation of a method that is already defined in its parent class. The appropriate method is based on the actual object type, not the reference type.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <p>Here's how to do it:</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}  
+    void sound() {{'{'}}  
+        System.out.println("Some generic animal sound"); <span class="comment">// Default sound</span>  
+    {{'}'}}  
+{{'}'}}  
+
+class Dog extends Animal {{'{'}}  
+    {{'@Override'}}
+    void sound() {{'{'}}  
+        System.out.println("Bark"); <span class="comment">// Dog-specific sound</span>  
+    {{'}'}}  
+{{'}'}}  
+
+class Cat extends Animal {{'{'}}  
+    {{'@Override'}}
+    void sound() {{'{'}}  
+        System.out.println("Meow"); <span class="comment">// Cat-specific sound</span>  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Animal myAnimal = new Animal();  
+        Animal myDog = new Dog(); <span class="comment">// Polymorphism: Superclass reference, subclass object</span>  
+        Animal myCat = new Cat();  
+
+        myAnimal.sound(); <span class="comment">// Output: Some generic animal sound</span>  
+        myDog.sound(); <span class="comment">// Output: Bark</span>  
+        myCat.sound(); <span class="comment">// Output: Meow</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s6')" *ngIf="visibleSections === 6" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <p>But how to implement these two?</p>
+            <p>You are tasked to create a program for a Pet Care Center. The program needs to:</p>
+            <li>Calculate the food requirement for different pets based on their size or weight. (This uses method overloading because the calculation method needs different parameters.)</li>
+            <li>Allow pets like dogs and cats to make their own sounds when prompted. (This uses method overriding because the sound method is implemented differently for each pet type.)</li>
+            <pre class="line-numbers"><code class="language-java">
+// Parent class for all pets
+class Pet {{'{'}}  
+    // Method to calculate food (overloading example)
+    int calculateFood(int weight) {{'{'}}  
+        return weight * 2; <span class="comment">/* Basic food calculation for weight */</span>  
+    {{'}'}}  
+
+    int calculateFood(int weight, int age) {{'{'}}  
+        return (weight * 2) + (age * 1); <span class="comment">/* Includes age in the calculation */</span>  
+    {{'}'}}  
+
+    // Method to make a sound (overridden in subclasses)
+    void sound() {{'{'}}  
+        System.out.println("Some generic pet sound"); <span class="comment">/* Default sound */</span>  
+    {{'}'}}  
+{{'}'}}  
+
+// Subclass for Dog
+class Dog extends Pet {{'{'}}  
+    {{'@Override'}}  
+    void sound() {{'{'}}  
+        System.out.println("Bark"); <span class="comment">/* Dog-specific sound */</span>  
+    {{'}'}}  
+{{'}'}}  
+
+// Subclass for Cat
+class Cat extends Pet {{'{'}}  
+    {{'@Override'}}  
+    void sound() {{'{'}}  
+        System.out.println("Meow"); <span class="comment">/* Cat-specific sound */</span>  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        // Method overloading example
+        Pet genericPet = new Pet();  
+        System.out.println("Food for pet (weight 10): " + genericPet.calculateFood(10));  
+        <span class="comment">/* Output: Food for pet (weight 10): 20 */</span>  
+        System.out.println("Food for pet (weight 10, age 2): " + genericPet.calculateFood(10, 2));  
+        <span class="comment">/* Output: Food for pet (weight 10, age 2): 22 */</span>  
+
+        // Method overriding example
+        Pet myDog = new Dog();  
+        Pet myCat = new Cat();  
+        myDog.sound(); <span class="comment">/* Output: Bark */</span>  
+        myCat.sound(); <span class="comment">/* Output: Meow */</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre> 
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s7')" *ngIf="visibleSections === 7" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>Best Practices</h1>
+            <p>Here are some of best practices when using polymorphism</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/b1-polymorphism.png" alt="">
+                    <h2>Use Interfaces and Abstract Classes</h2>
+                    <p>Define common behaviors using interfaces or abstract classes to ensure a consistent API across different</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/b2-polymorphism.png" alt="">
+                    <h2>Use Method Overloading for Compile-Time Polymorphisme</h2>
+                    <p>Method overloading enables defining multiple methods with the same name but different parameters.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/b3-polymorphism.png" alt="">
+                    <h2>Favor Composition Over Inheritance</h2>
+                    <p>Use composition to achieve polymorphic behavior, which provides more flexibility and reduces tight coupling.</p>
+                  </div> 
+                  <div class="carousel-item">
+                    <img src="assets/b4-polymorphism.png" alt="">
+                    <h2>Leverage Method Overriding</h2>
+                    <p>Override methods in derived classes to provide specific implementations while maintaining a common interface.</p>
+                  </div>               
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s8')" *ngIf="visibleSections === 8" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>Common Use Cases of Polymorphism</h1>
+            <p>Polymorphism in Java allows a single interface to represent multiple behaviors. It enables code reusability, flexibility, and maintainability. Below are some common use cases where polymorphism is frequently used in Java.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s9')" *ngIf="visibleSections === 9" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <img src="assets/c1-poly.png" alt="">
+            <h1>Method Overriding in Inheritance</h1>
+            <p>When a subclass provides a specific implementation of a method that is already defined in its superclass. This allows different subclasses to have their own behavior while sharing the same method signature. It is commonly used in frameworks and APIs where a parent class defines a general method, and child classes customize it.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s10')" *ngIf="visibleSections === 10" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s10" class="lesson-section" *ngIf="visibleSections >= 11">
+        <div class="content-container">
+            <img src="assets/c2-poly.png" alt="">
+            <h1>Method Overloading</h1>
+            <p>When multiple methods in the same class have the same name but different parameters (either in number, type, or both). This allows flexibility in how methods are called, making code more readable and reducing the need for redundant method names.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s11')" *ngIf="visibleSections === 11" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s11" class="lesson-section" *ngIf="visibleSections >= 12">
+        <div class="content-container">
+            <img src="assets/c3-poly.png" alt="">
+            <h1>Interface Implementation</h1>
+            <p>When multiple classes implement the same interface but provide different implementations of its methods. This enables a single interface to define a set of behaviors that can be used interchangeably, supporting loose coupling and code reusability in applications such as dependency injection and event handling.</p>
+        </div>
+        <div class="button-container">
+            <img src="assets/next.png" (click)="showNextSection('s12')" *ngIf="visibleSections === 12" class="next-image" alt="Next">
+          </div>
+    </section>
+
+    <section id="s12" class="lesson-section" *ngIf="visibleSections >= 13">
+        <div class="content-container quiz-container">
+            <h2 class="quiz-title">Check Your Understanding</h2>
+            <div class="quiz-content">
+              <div class="question-card" *ngFor="let question of questions; let i = index">
+                <p class="question-text">{{ i + 1 }}. {{ question.text }}</p>
+                <div class="options-container">
+                  <div class="option" *ngFor="let option of question.options">
+                    <label class="option-label">
+                      <input type="radio" 
+                             [name]="'question' + i" 
+                             [value]="option" 
+                             (change)="selectAnswer(i, option)">
+                      <span class="option-text">{{ option }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="submit-container">
+                <button class="submit-btn" (click)="submitAnswers()">
+                  <i class="fas fa-check-circle me-2"></i>Submit Answers
+                </button>
+              </div>
+            </div>
+          </div>
+      </section>
+    
+      <section id="s13" class="lesson-section" *ngIf="visibleSections >= 14">
+        <div class="content-container completion-container">
+            <div class="completion-content">
+              <div class="completion-header">
+                <i class="fas fa-trophy trophy-icon"></i>
+                <h1>Congratulations!</h1>
+              </div>
+              <p class="completion-message">You have successfully completed the lesson on Understanding Abstraction!</p>
+              <div class="completion-details">
+                <div class="completion-stat">
+                  <i class="fas fa-star"></i>
+                  <span>Lesson Completed</span>
+                </div>
+                <div class="completion-stat">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Knowledge Verified</span>
+                </div>
+              </div>
+              <div class="next-steps">
+                <img src="assets/finish.png" class="finish-image" (click)="showCompletionPopup()" alt="Finish">
+                <p class="next-hint">Click the coffee bag to continue your journey!</p>
+              </div>
+            </div>
+          </div>
+      </section>
+</div>
